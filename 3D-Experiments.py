@@ -72,9 +72,9 @@ def APUpybullet(mass1, mass2, ALPHA):
         sphere2Pos, sphere2Orn = p.getBasePositionAndOrientation(sphere2)
         force1 = ALPHA * (np.array(startPos) - np.array(sphere1Pos))
         force2 = ALPHA * (np.array(startPos) - np.array(sphere2Pos))
-        pos1comp = round(np.array(sphere1Pos)[0], 1)
-        pos2comp = round(np.array(sphere2Pos)[0], 1)
-        if pos1comp == checkPos or pos2comp == abs(checkPos):
+        pos1comp = round(np.array(sphere1Pos)[0])
+        pos2comp = round(np.array(sphere2Pos)[0])
+        if pos1comp == -1 or pos2comp == 1:
             ALPHA = 0
         p.applyExternalForce(objectUniqueId=sphere1, linkIndex=-1, forceObj=force1, posObj=sphere1Pos, flags=p.WORLD_FRAME)
         p.applyExternalForce(objectUniqueId=sphere2, linkIndex=-1, forceObj=force2, posObj=sphere2Pos, flags=p.WORLD_FRAME)
@@ -146,4 +146,4 @@ def main():
 
 
 main()
-# TODO:  window + pybullet.
+# TODO: pybullet(ANU).
