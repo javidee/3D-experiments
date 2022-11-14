@@ -68,14 +68,14 @@ data_fizik_tasks = {
 def tasksWin():
     col_fizik = [[sg.Text(data_fizik_tasks['questions']["question1"], key = "quest")],
         [sg.Input(key = "answer")],
-        [sg.Button('Submit', font = (20), size = (20, 3))]]
+        [sg.Button('Далі', font = (20), size = (20, 3))]]
     layout_fizik = [col_fizik]
     windowTasksFizik = sg.Window("Tasks", layout_fizik, size = (600, 400))
     n = 1
     s = 0
     while True:
         event_task, values_task = windowTasksFizik.read()
-        if event_task == "Submit":
+        if event_task == "Далі":
             values_task[n] = windowTasksFizik["answer"].get()
             if values_task[n] == data_fizik_tasks["answers"]["answer" + str(n)]:
                 s = s + 1
@@ -84,7 +84,7 @@ def tasksWin():
             if n == 11:
                 windowTasksFizik.close()
                 layout_res = [[sg.Text("Кількість правильних відповідей: " + str(s) + "(" + str(s) + "0%)", font = (15))]]
-                windowResult = sg.Window("Result", layout_res, size = (500, 150))
+                windowResult = sg.Window("Результати", layout_res, size = (500, 150))
                 event_res = windowResult.read()
                 if event_res == sg.WIN_CLOSED:
                     break
